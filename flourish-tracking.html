@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>flourish analytics test</title>
+    <script>
+        window.Flourish = {};
+    </script>
+    <script src="https://public.flourish.studio/resources/embed.js"></script>
+
+    <script>
+        Flourish.addAnalyticsListener(function(event) {
+            const ignoredActions = ["mouse_leave", "key_down", "pause", "slideChange"]; // complete list is ["mouse_enter", "mouse_leave", "click", "key_down", "play", "pause", "slide_change"]
+            const action = event.action;
+            // Don't spend time on something we don't want to track
+            if (ignoredActions.includes(action)) return;
+
+            const customCategory = event.story_id 
+                ? "flourishStory"
+                : "flourishChart";
+            const customAction = event.story_id
+                ? event.story_id
+                : event.visualisation_id;
+            const customLabel = event.action;
+
+            // Stuff for Google Analytics
+            const parameters = {
+                event: "customEvent",
+                customCategory,
+                customAction,
+                customLabel
+            };
+            // Send the event to Google Analytics
+            console.log(`For GA: ${JSON.stringify(parameters)}`);
+        })
+    </script>
+</head>
+<body>
+    <h1>Chart</h1>
+    <div class="flourish-embed flourish-chart" data-src="visualisation/7259747"></div>
+    <h1>Story</h1>
+    <div class="flourish-embed" data-src="story/872110"></div>
+</body>
+</html>
