@@ -6,11 +6,44 @@
         <h1>referer test</h1>
 
         <p>
-            <a href="https://read.oecd.org/abc123?debug=true">for debug, click here</a> (should transmit the Referer, i.e. this page...)
+            <a href="https://read.oecd.org/abc123?debug=true">for debug, click here</a> (no referrer policy set in link, will use server default I guess)
         </p>
+
+        <p>
+            <a href="https://read.oecd.org/abc123?debug=true" referrerpolicy="origin">for debug, click here</a> (referrerpolicy="origin")
+        </p>
+
+        <p>
+            <a href="https://read.oecd.org/abc123?debug=true" referrerpolicy="same-origin">for debug, click here</a> (referrerpolicy="same-origin")
+        </p>
+
+        <p>
+            <a href="https://read.oecd.org/abc123?debug=true" referrerpolicy="origin-when-cross-origin">for debug, click here</a> (referrerpolicy="origin-when-cross-origin")
+        </p>
+
+        <p>
+            <a href="https://read.oecd.org/abc123?debug=true" referrerpolicy="strict-origin-when-cross-origin">for debug, click here</a> (referrerpolicy="strict-origin-when-cross-origin")
+        </p>
+
+        <p>
+            <a href="https://read.oecd.org/abc123?debug=true" referrerpolicy="strict-origin">for debug, click here</a> (referrerpolicy="strict-origin")
+        </p>
+
+        <p>
+            <a href="https://read.oecd.org/abc123?debug=true" referrerpolicy="unsafe-url">for debug, click here</a> (referrerpolicy="unsafe-url")
+        </p>
+
+        <p>
+            <a href="https://read.oecd.org/abc123?debug=true" referrerpolicy="no-referrer">for debug, click here</a> (referrerpolicy="no-referrer")
+        </p>
+
+        
+
         <p>
             <a href="https://read.oecd.org/abc123">for real, click here</a> (should transmit the Referer, i.e. this page...)
         </p>
+
+
 
     </body>
 </html>
